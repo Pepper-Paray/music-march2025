@@ -1,4 +1,4 @@
-let songs = [
+const song = [
 
     {
 
@@ -161,12 +161,57 @@ let songs = [
     },
 
 ];
-let Music =["Blinding Lights",
-        "Rockstar",
-        "Savage Love",
-        "Adore You",
-        "Circles",
-        "Watermelon Sugar",
-        "Don't Start Now",
-        "Levitating"]
-console.log(Music)
+const songs = [
+    {
+        title: "Blinding Lights",
+        artist: "The Weeknd",
+        duration: "3:20",
+        liked: true,
+        audio: "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/d6/87/41/d687410c-4714-af1d-e055-3296d4777226/mzaf_3899967882325561494.plus.aac.ep.m4a",
+        image: "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/6f/bc/e6/6fbce6c4-c38c-72d8-4fd0-66cfff32f679/20UMGIM12176.rgb.jpg/100x100bb.jpg",
+    },
+    
+];
+
+const playlistContainer = document.getElementById("playlist");
+
+songs.forEach((song) => {
+    const songDiv = document.createElement("div");
+    songDiv.className = "song";
+
+    const title = document.createElement("h3");
+    title.textContent = song.title;
+
+    const artist = document.createElement("p");
+    artist.textContent = `Artist: ${song.artist}`;
+
+    const duration = document.createElement("p");
+    duration.textContent = `Duration: ${song.duration}`;
+
+    const favorite = document.createElement("p");
+    favorite.textContent = song.liked ? "⭐ Favorite" : "";
+
+    const audio = document.createElement("audio");
+    audio.controls = true;
+    audio.src = song.audio;
+
+    const image = document.createElement("img");
+    image.src = song.image;
+
+    // Append all elements to songDiv
+    songDiv.appendChild(title);
+    songDiv.appendChild(artist);
+    songDiv.appendChild(duration);
+    songDiv.appendChild(favorite);
+    songDiv.appendChild(audio);
+    songDiv.appendChild(image);
+
+    // Append songDiv to playlistContainer
+    playlistContainer.appendChild(songDiv);
+});
+
+
+
+
+
+
